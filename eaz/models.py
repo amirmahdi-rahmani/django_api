@@ -11,7 +11,6 @@ class Category(models.Model):
 
 class Thing(models.Model):
     name = models.CharField(max_length=50)
-    # slug = models.SlugField()
     description = models.TextField()
     category = models.ForeignKey(Category,on_delete=models.CASCADE,related_name='things')
     link = models.URLField()

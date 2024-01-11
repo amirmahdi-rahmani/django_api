@@ -45,7 +45,7 @@ def things_details(request,pk):
     # thing = Thing.objects.get(pk=pk)
     thing = get_object_or_404(Thing,pk=pk)
 
-    serializer = ThingSerializer(thing)
+    serializer = ThingSerializer(thing,context={'request':request})
     
     return Response(serializer.data)
 
