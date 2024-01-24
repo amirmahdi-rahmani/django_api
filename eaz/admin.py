@@ -7,18 +7,22 @@ class ThingImageInline(admin.TabularInline):
 
 @admin.register(Thing)
 class ThingsAdmin(admin.ModelAdmin):
-    list_display = ['name','category','get_link']
+    list_display = ['name','category_title','get_link']
     list_select_related = ['category']
     list_filter = ['category']
     inlines =[ThingImageInline]
     search_fields = ['name']
 
+    def category_title(self,obj):
+        return obj.category.title
+    
     def get_link(self,obj):
         return format_html("<a href='{url}'>{slug}</a>", url=obj.link , slug='click')
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['title' , 'slug']
     
-
-admin.site.register(Category)
 admin.site.register(Image)
 
 

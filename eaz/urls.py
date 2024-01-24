@@ -11,7 +11,6 @@ urlpatterns = [
     path('famous/',views.famous),
     path('foods/',views.foods),
     path('places/',views.places),
-    path('things/<int:pk>',views.things_details),
     # Authentication endpoint
     path('register/',views.register),
     path('login/',views.log_in),
